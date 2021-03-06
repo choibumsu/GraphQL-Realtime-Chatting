@@ -26,7 +26,7 @@ export const resolvers = {
 			return newUser
 		},
 		deleteUser(_, { id }) {
-			const removedIndex = users.findIndex((user) => user.id === +id)
+			const removedIndex = users.findIndex((u) => u.id === +id)
 			if (removedIndex === -1) return undefined
 
 			const removedUser = { ...users[removedIndex] }
@@ -36,9 +36,12 @@ export const resolvers = {
 			return removedUser
 		},
 		postChat(_, { input }) {
+			const user = users.find((u) => u.id === +input.userId)
+			if (!user) return undefined
+
 			const newChat = {
 				text: input.text,
-				user: users.find((user) => user.id === input.userId),
+				user,
 				createdAt: new Date(),
 			}
 

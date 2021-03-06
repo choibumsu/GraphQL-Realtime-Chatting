@@ -1,7 +1,7 @@
 scalar Date
 
 type User {
-	id: ID!
+	id: Int!
 	name: String!
 	age: Int
 }
@@ -24,13 +24,13 @@ input UserInput {
 }
 
 input ChatInput {
-	userId: ID!
+	userId: Int!
 	text: String!
 }
 
 type Mutation {
 	postUser(input: UserInput!): User
-	deleteUser(id: ID!): User
+	deleteUser(id: Int!): User
 	postChat(input: ChatInput!): Chat
 }
 
