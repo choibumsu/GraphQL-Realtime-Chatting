@@ -22,6 +22,7 @@ function App() {
 	const subUserRemoved = useSubscription(subscription.USER_REMOVED)
 	const subChatAdded = useSubscription(subscription.CHAT_ADDED)
 
+	const chatContainer = useRef()
 	const chatInput = useRef()
 
 	useEffect(() => {
@@ -71,6 +72,9 @@ function App() {
 		if (!subChatAdded.data) return
 
 		setChats([...chats, subChatAdded.data.chatAdded])
+		setTimeout(() => {
+			chatContainer.current.scrollTop = chatContainer.current.scrollHeight
+		}, 0)
 	}, [subChatAdded.data])
 
 	const inputChat = (e) => {
@@ -101,7 +105,7 @@ function App() {
 				</div>
 			</header>
 			<main>
-				<div className="chat-container">
+				<div className="chat-container" ref={chatContainer}>
 					{chats.map((chat, index) => (
 						<Chat {...chat} userId={user.id} key={index}></Chat>
 					))}
