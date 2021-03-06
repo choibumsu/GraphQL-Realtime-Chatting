@@ -1,0 +1,41 @@
+scalar Date
+
+type User {
+	id: ID!
+	name: String!
+	age: Int
+}
+
+type Chat {
+	text: String!
+	user: User!
+	createdAt: Date!
+}
+
+type Query {
+	getUsers: [User]!
+	getUser(id: Int!): User
+	getChats: [Chat]!
+}
+
+input UserInput {
+	name: String!
+	age: Int
+}
+
+input ChatInput {
+	userId: ID!
+	text: String!
+}
+
+type Mutation {
+	postUser(input: UserInput!): User
+	deleteUser(id: ID!): User
+	postChat(input: ChatInput!): Chat
+}
+
+type Subscription {
+	userAdded: User
+	userRemoved: User
+	chatAdded: Chat
+}

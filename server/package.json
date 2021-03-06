@@ -1,0 +1,21 @@
+{
+	"name": "server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "nodemon app.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"apollo-server": "^2.21.0",
+		"graphql": "^15.5.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.7"
+	}
+}
